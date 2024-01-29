@@ -1,6 +1,7 @@
 This app was initialized with Vite and typescript, as opposed to Create React App, for faster and light weight set up
 The purpose of this app is to display the sample JSON data in a front end table format and allow sorting and searching.
 If you are running this app locally, navigate to the root folder, run: npm install npm run dev, this will start the server locally. Open in browser and you can use the app
+If you dont want to bother with setting it up, this app is deployed on : https://data-tables-m.web.app
 
 -The data is displayed in a table. Tailwind css was used to do the styling, as it made it easier to make sute the table was properly lined up
 
