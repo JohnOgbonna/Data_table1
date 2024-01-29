@@ -21,7 +21,7 @@ const TableComponent = () => {
 
     return (
         <>
-            <div className={'grid grid-rows gap-4 sm:text-xs shadow-lg min-w-[503px] pb-8'}>
+            <div className={'grid grid-rows gap-4 sm:text-xs shadow-lg min-w-[503px] pb-8 max-w-[1280px] mx-auto my-2'}>
 
                 {/* top row allows user to chose ascending or decending order */}
                 <div className='flex items-center justify-center mb-0 gap-2'
@@ -32,7 +32,7 @@ const TableComponent = () => {
                     <h2 className='text-[26px] sm:text-[1rem]'>{`Sorting By: ${sorting.toUpperCase()} Order: ${sortDirectionOptions[sortDirection]}`}</h2>
                     {/* rotate arrow based on ascending or descending  */}
                     <img
-                        className={`h-[30px] transition-all duration-500 ${sortDirection == 'asc' ? 'rotate-180' : ''}`}
+                        className={`h-[30px] sm:h-[19px] transition-all duration-500 ${sortDirection == 'asc' ? 'rotate-180' : ''}`}
                         src={dropDownArrow} alt='dropDownArrow' />
                 </div>
                 {/* //call searchbar component and pass in state update functions */}
