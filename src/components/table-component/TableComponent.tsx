@@ -83,7 +83,7 @@ const TableComponent = () => {
                 }
                 {
                     //Notify that there are no search results if there are no results, aka, either search data or sorted data length <1
-                    searchData.length < 1 ? (<p>{`No Search Results With ${selectedSearchKey.toUpperCase()} That Includes "${searchValue}"`}</p>) : (null)
+                    searchData.length < 1 ? (<p>{`No Search Results That Include "${searchValue}" Under The Specified Category`}</p>) : (null)
                 }
                  <p className='mb-1'>{`${sortedData ? sortedData.length : searchData.length} Items`}</p>
                 <SearchBar

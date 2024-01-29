@@ -15,14 +15,12 @@ If you dont want to bother with setting it up, this app is deployed on : https:/
 
 -Data can be searched. The dropdown allows you to pick what key to search by and the relevant results will be shown below dynamically
 
--If there are no values for the selected key in an item, it will search all keys for that item, this is done to create a more inclusive and expansive search
+-Individual or all columns can be searched, by selecting the appropriate option in the dropdown
 
 -Both the search and the filter functions are done using a custom hook, these can be found in the hook folder. This allowed the component code to be simplified and removed the need for a use effect in the parent Table Component, as the custom hooks now take care of updating the return values in the table. 
 
 -When data is searched, it can also be sorted.
 
 -Headers and values in the sort key column will appear red and the header will be underlined
-
--Although not ideal, there is commented out code in the useSearch.tsx . If enabled, this code would make it so that if there are no values for the selected key in an item, it will search all keys for that item.
 
 -I considered grouping some states together into objects, like sorting and setSortingKey, but having them as individuals made it a bit easier to follow

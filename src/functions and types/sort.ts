@@ -1,12 +1,4 @@
-
-interface Data {
-  id: number;
-  name: string;
-  quantity: number;
-  category: string;
-  price: number;
-  description: string;
-}
+import { Data } from "./typesAndInterfaces";
 
 type SortDirection = 'asc' | 'desc';
 

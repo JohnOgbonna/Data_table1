@@ -9,16 +9,16 @@ export default function useSearch(value: string, key: keyof Data) {
     useEffect(() => {
         const filterData = (searchValue: string, key?: keyof Data | null) => {
             const filteredData = sampleData.filter((item) => {
-                if (key && item[key].toString().toLowerCase().includes(searchValue.toLowerCase())) {
+                if (key) {
                     // Filter based on the selected search key
                     return item[key].toString().toLowerCase().includes(searchValue.toLowerCase());
                 }
-                // else {
-                //     // Filter based on any key if the selected key isn't found
-                //     return Object.values(item).some((value) =>
-                //         value.toString().toLowerCase().includes(searchValue.toLowerCase())
-                //     );
-                // }
+                else {
+                    // Filter based on any key isnt included meaning search all
+                    return Object.values(item).some((value) =>
+                        value.toString().toLowerCase().includes(searchValue.toLowerCase())
+                    );
+                }
             });
             return filteredData
         };
