@@ -21,3 +21,7 @@ If you are running this app locally, navigate to the root folder, run: npm insta
 -When data is searched, it can also be sorted.
 
 -Headers and values in the sort key column will appear red and the header will be underlined
+
+-Although not ideal, there is commented out code in the useSearch.tsx . If enabled, this code would make it so that if there are no values for the selected key in an item, it will search all keys for that item.
+
+-I considered grouping some states together into objects, like sorting and setSortingKey, but having them as individuals made it a bit easier to follow

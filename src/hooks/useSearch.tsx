@@ -13,12 +13,12 @@ export default function useSearch(value: string, key: keyof Data) {
                     // Filter based on the selected search key
                     return item[key].toString().toLowerCase().includes(searchValue.toLowerCase());
                 }
-                else {
-                    // Filter based on any key if the selected key isn't found
-                    return Object.values(item).some((value) =>
-                        value.toString().toLowerCase().includes(searchValue.toLowerCase())
-                    );
-                }
+                // else {
+                //     // Filter based on any key if the selected key isn't found
+                //     return Object.values(item).some((value) =>
+                //         value.toString().toLowerCase().includes(searchValue.toLowerCase())
+                //     );
+                // }
             });
             return filteredData
         };

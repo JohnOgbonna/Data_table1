@@ -4,7 +4,7 @@ import dropDownArrow from '../../assets/icons/drop-down-arrow.svg'
 import SearchBar from "../searchbar-component/SearchBarComponent"
 import useSearch from "../../hooks/useSearch"
 import useSort from "../../hooks/useSort"
-import { SortDirection, tableDataTypes, sortDirectionOptions } from "../../functions and types/typesAndInterfaces"
+import { SortDirection, tableDataTypes, sortDirectionOptions, Data } from "../../functions and types/typesAndInterfaces"
 
 
 const TableComponent = () => {
@@ -13,7 +13,7 @@ const TableComponent = () => {
     const [sorting, setSorting] = useState<any>('id')
     const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
     const [searchValue, setSearchValue] = useState('');
-    const [selectedSearchKey, setSelectedSearchKey] = useState<any>(null);
+    const [selectedSearchKey, setSelectedSearchKey] = useState<keyof Data>('name');
     // call custom hooks to search data and sort data
     const [searchData] = useSearch(searchValue, selectedSearchKey)
     const [sortedData] = useSort(searchData, sorting, sortDirection)
@@ -21,7 +21,7 @@ const TableComponent = () => {
 
     return (
         <>
-            <div className={'grid grid-rows gap-4 sm:text-xs shadow-lg min-w-[503px]'}>
+            <div className={'grid grid-rows gap-4 sm:text-xs shadow-lg min-w-[503px] pb-8'}>
 
                 {/* top row allows user to chose ascending or decending order */}
                 <div className='flex items-center justify-center mb-0 gap-2'
@@ -29,7 +29,7 @@ const TableComponent = () => {
                         setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')
                     }}
                 >
-                    <h2 className='text-[26px]'>{`Sorting By: ${sorting.toUpperCase()} Order: ${sortDirectionOptions[sortDirection]}`}</h2>
+                    <h2 className='text-[26px] sm:text-[1rem]'>{`Sorting By: ${sorting.toUpperCase()} Order: ${sortDirectionOptions[sortDirection]}`}</h2>
                     {/* rotate arrow based on ascending or descending  */}
                     <img
                         className={`h-[30px] transition-all duration-500 ${sortDirection == 'asc' ? 'rotate-180' : ''}`}
@@ -40,9 +40,10 @@ const TableComponent = () => {
                     updateSearchValue={setSearchValue}
                     updateSearchKey={setSelectedSearchKey}
                 />
-                <p className='mb-4'>Select Category Header to Change Sorting Key</p>
+                <p>Select Category Header to Change Sorting Key</p>
+                <p className='mb-1'>{`${sortedData ? sortedData.length : searchData.length} Items`}</p>
                 {/* // first row with headers for column */}
-                <ul className="grid grid-cols-7">
+                <ul className="grid grid-cols-7 border-t-2 mt-1 pt-2">
                     {
                         //use map to set the first row with the column hearders, along with an onclick that allows the user to sort by that column
                         tableDataTypes.map(type => {
@@ -82,8 +83,13 @@ const TableComponent = () => {
                 }
                 {
                     //Notify that there are no search results if there are no results, aka, either search data or sorted data length <1
-                    searchData.length < 1 ? (<p>{`No Search Results for "${searchValue}"`}</p>) : (null)
+                    searchData.length < 1 ? (<p>{`No Search Results With ${selectedSearchKey.toUpperCase()} That Includes "${searchValue}"`}</p>) : (null)
                 }
+                 <p className='mb-1'>{`${sortedData ? sortedData.length : searchData.length} Items`}</p>
+                <SearchBar
+                    updateSearchValue={setSearchValue}
+                    updateSearchKey={setSelectedSearchKey}
+                />
 
             </div>
         </>

@@ -5,6 +5,7 @@ export interface Data {
     "category": string,
     "price": number,
     "description": string
+    
 }
 export type SortDirection = 'asc' | 'desc';
 
