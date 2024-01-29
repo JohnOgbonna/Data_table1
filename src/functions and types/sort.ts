@@ -1,6 +1,5 @@
-import { Data } from "./typesAndInterfaces";
+import { Data, SortDirection} from "./typesAndInterfaces";
 
-type SortDirection = 'asc' | 'desc';
 
 export function sortByKey(data: Data[], key: keyof Data, direction: SortDirection = 'asc'): Data[] {
   return data.sort((a, b) => {
